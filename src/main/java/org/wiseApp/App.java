@@ -1,5 +1,7 @@
 package org.wiseApp;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -11,8 +13,8 @@ public class App {
     }
 
     public void run() {
-        String wise = "";
-        String writer = "";
+        List<Wise> wiseList = new ArrayList<>();
+        int wiseCount = 0;
         System.out.println("=== 명언 앱 ===");
         while (true) {
             System.out.print("명령)");
@@ -25,9 +27,21 @@ public class App {
 
             if (command.equals("등록")) {
                 System.out.print("명언 : ");
-                wise = sc.nextLine().trim();
+                String wiseName = sc.nextLine().trim();
                 System.out.print("작가 : ");
-                writer = sc.nextLine().trim();
+                String writer = sc.nextLine().trim();
+                wiseCount++;
+                Wise wise = new Wise(wiseCount, wiseName, writer);
+                wiseList.add(wise);
+                System.out.println(wiseCount + "번 명언이 등록되었습니다.");
+            }
+
+            if (command.equals("목록")) {
+                System.out.println("번호  /  작가  /  명언");
+                System.out.println("--------------------------");
+                for (int i = wiseList.size() - 1; i >= 0; i--) { // 2회반복
+                    System.out.printf("%d / %s / %s\n", wiseList.get(i).getId(), wiseList.get(i).getWriter(), wiseList.get(i).wiseName);
+                }
             }
         }
     }
