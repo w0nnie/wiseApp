@@ -26,6 +26,10 @@ public class App {
             if (command.equals("목록")) {
                 wiseController.list();
             }
+
+            if (command.startsWith("삭제")) {
+                wiseController.remove(command);
+            }
         }
     }
 }
