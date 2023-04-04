@@ -1,4 +1,4 @@
-package org.wiseApp;
+package org.wiseApp.wise.entity;
 
 public class Wise {
     long id;

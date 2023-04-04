@@ -1,5 +1,7 @@
 package org.wiseApp;
 
+import org.wiseApp.wise.entity.Wise;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -40,7 +42,8 @@ public class App {
                 System.out.println("번호  /  작가  /  명언");
                 System.out.println("--------------------------");
                 for (int i = wiseList.size() - 1; i >= 0; i--) { // 2회반복
-                    System.out.printf("%d / %s / %s\n", wiseList.get(i).getId(), wiseList.get(i).getWriter(), wiseList.get(i).wiseName);
+                    System.out.printf("%d / %s / %s\n", wiseList.get(i).getId(), wiseList.get(i).getWriter(), wiseList.get(i).getWiseName());
+
                 }
             }
         }
