@@ -28,6 +28,12 @@ public class App {
             }
 
             if (command.startsWith("삭제")) {
+                Rq rq = new Rq(command);
+
+                System.out.printf("actionCode : %s\n", rq.getActionCode());
+                System.out.printf("Params : %s\n", rq.getParams("id"));
+                System.out.printf("writer : %s\n", rq.getParams("writer"));
+                System.out.printf("content : %s\n", rq.getParams("content"));
                 wiseController.remove(command);
             }
         }
