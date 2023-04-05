@@ -1,6 +1,7 @@
 package org.wiseApp.wise.controller;
 
 import org.wiseApp.Container;
+import org.wiseApp.Rq;
 import org.wiseApp.wise.entity.Wise;
 
 import java.util.*;
@@ -35,9 +36,10 @@ public class WiseController {
         }
     }
 
-    public void remove(String command) {
+    public void remove(Rq rq) {
+        int id = rq.getIntParam(rq.getParams("id"), -1);
 
 
-        // 정리 끝
+        System.out.printf("%d번이 삭제되었습니다. \n", id);
     }
 }
