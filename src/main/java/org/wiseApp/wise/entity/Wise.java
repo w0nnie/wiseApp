@@ -23,4 +23,9 @@ public class Wise {
     public String getWriter() {
         return writer;
     }
+
+    public void wiseUpdate(String wiseName,String writer) {
+        this.wiseName = wiseName;
+        this.writer = writer;
+    }
 }

@@ -39,7 +39,7 @@ public class WiseController {
     public void remove(Rq rq) {
         int id = rq.getIntParam("id", -1);
         if(id == -1)  {
-            System.out.println("id를 입력하세요(정수)");
+            System.out.println("삭제할 id를 입력하세요(정수)");
             return;
         }
         for (Wise wise : wiseList) {
@@ -49,6 +49,26 @@ public class WiseController {
                 return;
             }
         }
-        System.out.println("해당 id의 명언이 존재하지 않습니다.");
+        System.out.printf("%d번 명언이 존재하지 않습니다.\n",id);
+    }
+
+    public void update(Rq rq) {
+        int id = rq.getIntParam("id", -1);
+        if(id == -1)  {
+            System.out.println("수정할 id를 입력하세요(정수)");
+            return;
+        }
+        for (Wise wise : wiseList) {
+            if (wise.getId() == id) {
+                System.out.print("명언 : ");
+                String newName = Container.getScanner().nextLine().trim();
+                System.out.print("작가 : ");
+                String newWriter = Container.getScanner().nextLine().trim();
+                wise.wiseUpdate(newName, newWriter);
+                System.out.printf("%d번이 수정되었습니다. \n", id);
+                return;
+            }
+        }
+        System.out.printf("%d번 명언이 존재하지 않습니다.\n",id);
     }
 }
