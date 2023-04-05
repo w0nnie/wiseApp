@@ -37,9 +37,18 @@ public class WiseController {
     }
 
     public void remove(Rq rq) {
-        int id = rq.getIntParam(rq.getParams("id"), -1);
-
-
-        System.out.printf("%d번이 삭제되었습니다. \n", id);
+        int id = rq.getIntParam("id", -1);
+        if(id == -1)  {
+            System.out.println("id를 입력하세요(정수)");
+            return;
+        }
+        for (Wise wise : wiseList) {
+            if (wise.getId() == id) {
+                wiseList.remove(wise);
+                System.out.printf("%d번이 삭제되었습니다. \n", id);
+                return;
+            }
+        }
+        System.out.println("해당 id의 명언이 존재하지 않습니다.");
     }
 }

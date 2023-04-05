@@ -1,6 +1,5 @@
 package org.wiseApp;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,18 +14,21 @@ public class Rq {
 
         actionCode = commandBits[0];
 
-        if (commandBits.length == 1) return;
         params = new HashMap<>();
+
+        if (commandBits.length == 1) return;
+
         String[] paramsBits = commandBits[1].split("&");
+
         for (String paramStr : paramsBits) {
             String[] paramStrBits = paramStr.split("=", 2);
 
             if(paramStrBits.length == 1) continue;
+
             String key = paramStrBits[0];
             String value = paramStrBits[1];
 
             params.put(key, value);
-
         }
     }
 
@@ -40,9 +42,10 @@ public class Rq {
 
     public int getIntParam(String id, int defaultValue) {
         try {
-            return Integer.parseInt(getParams(id));
+            int ids = Integer.parseInt(getParams(id));
+            return ids;
         } catch (NumberFormatException e) {
-            System.out.println("id를 입력하세요(정수)");
+
         }
         return defaultValue;
     }

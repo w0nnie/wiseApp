@@ -29,6 +29,9 @@ public class App {
                 case "삭제":
                     wiseController.remove(rq);
                     break;
+                default:
+                    System.out.println("다시 입력해주세요.");
+                    break;
             }
         }
     }
