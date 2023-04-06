@@ -28,4 +28,16 @@ public class Wise {
         this.wiseName = wiseName;
         this.writer = writer;
     }
+
+    public String toJson() {
+        return """
+                {
+                    "id": %d,
+                    "content": "%s",
+                    "writer": "%s"
+                }
+                """
+                .stripIndent()
+                .formatted(id, wiseName, writer);
+    }
 }

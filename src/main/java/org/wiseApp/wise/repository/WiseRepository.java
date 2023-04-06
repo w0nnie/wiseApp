@@ -1,45 +1,37 @@
 package org.wiseApp.wise.repository;
 
 import org.wiseApp.wise.entity.Wise;
-import java.util.ArrayList;
+import org.wiseApp.wise.table.WiseTable;
+
 import java.util.List;
 
 public class WiseRepository {
 
-    private List<Wise> wiseList;
-    private int wiseCount;
-
+    private WiseTable wiseTable;
     public WiseRepository() {
-        wiseList = new ArrayList<>();
-        wiseCount = 0;
+        wiseTable = new WiseTable();
     }
 
 
     public long write(String wiseName, String writer) {
-        wiseCount++;
-        Wise wise = new Wise(wiseCount, wiseName, writer);
-        wiseList.add(wise);
-        return wiseCount;
+        long id = wiseTable.getLastId() + 1;
+        Wise wise = new Wise(id, wiseName, writer);
+        return wiseTable.save(wise);
     }
 
     public List<Wise> findAll() {
-        return wiseList;
+        return wiseTable.findAll();
     }
 
     public void remove(Wise wise) {
-        wiseList.remove(wise);
+        wiseTable.remove(wise);
     }
 
     public Wise findById(int id) {
-        for (Wise wise : wiseList) {
-            if (wise.getId() == id) {
-                return wise;
-            }
-        }
-        return null;
+        return wiseTable.findById(id);
     }
 
     public void update(Wise wise, String newName, String newWriter) {
-        wise.wiseUpdate(newName, newWriter);
+        wiseTable.update(wise, newName, newWriter);
     }
 }
