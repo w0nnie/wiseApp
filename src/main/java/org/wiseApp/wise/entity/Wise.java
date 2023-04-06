@@ -38,6 +38,7 @@ public class Wise {
                 }
                 """
                 .stripIndent()
-                .formatted(id, wiseName, writer);
+                .formatted(id, wiseName, writer)
+                .trim();
     }
 }

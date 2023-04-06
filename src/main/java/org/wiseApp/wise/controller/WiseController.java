@@ -74,4 +74,10 @@ public class WiseController {
 
         System.out.printf("%d번이 수정되었습니다. \n", id);
     }
+
+    public void build() {
+        wiseService.build();
+
+        System.out.println("data.json 파일의 내용이 갱신되었습니다.");
+    }
 }

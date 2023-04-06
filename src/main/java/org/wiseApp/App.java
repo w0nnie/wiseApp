@@ -32,6 +32,9 @@ public class App {
                 case "수정":
                     wiseController.update(rq);
                     break;
+                case "빌드":
+                    wiseController.build();
+                    break;
                 default:
                     System.out.println("다시 입력해주세요.");
                     break;
